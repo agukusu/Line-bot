@@ -56,7 +56,7 @@ def handle_message(event):
     message1 = TextSendMessage(text='https://tw.news.yahoo.com/')
     message2 = TextSendMessage(text='https://ifoodie.tw/explore/%E5%8F%B0%E5%8C%97%E5%B8%82/list/'+event.message.text)
     message3 = TextSendMessage(text=movie1())
-    
+    message4 = TextSendMessage(text=rate4())
 
 
     if event.message.text in map:
@@ -65,6 +65,8 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token,message1)
     elif event.message.text in type1:
         line_bot_api.reply_message(event.reply_token,message2)
+    elif "匯率" in event.message.text:
+        line_bot_api.reply_message(event.reply_token,message4)
 
     elif event.message.text in stockname:
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=stock3(event.message.text)))

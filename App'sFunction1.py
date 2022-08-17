@@ -72,3 +72,22 @@ def stock3(stock):
     content = "name:" + name1 + "\n" + "price2:" + price2 + "\n" +"difference:" + difference3
 
     return content
+
+def rate4():
+    import pandas as pd
+    url='https://www.taifex.com.tw/data_gov/taifex_open_data.asp?data_name=DailyForeignExchangeRates'
+    df=pd.read_csv(url,encoding='big5')
+
+    time1=df['日期'].tail(2)
+    time2=str(time1.iloc[0])
+    time3=str(time1.iloc[1])
+    rate_Us=df['美元／新台幣'].tail(2)
+    rate_Us1=str(rate_Us.iloc[0])
+    rate_Us2=str(rate_Us.iloc[1])
+    rate_Cn=df['人民幣／新台幣'].tail(2)
+    rate_Cn1=str(rate_Cn.iloc[0])
+    rate_Cn2=str(rate_Cn.iloc[1])
+    form1="時間:  "+time2+"\nUSD/NTD:  "+rate_Us1+"\nCNY/NTD:  "+rate_Cn1
+    form2="時間:  "+time3+"\nUSD/NTD:  "+rate_Us2+"\nCNY/NTD:  "+rate_Cn2
+    form3=form1+"\n"+form2
+    return form3
